@@ -1,8 +1,0 @@
-flask
-torch
-opencv-python
-pillow
-tqdm
-werkzeug
-numpy
-gunicorn
