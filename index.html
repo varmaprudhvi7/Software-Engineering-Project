@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title> My Software Engineering Project </title>
+  </head>
+  <body background="static/background.jpeg">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">SE PROJECT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown">
+              Get in touch!
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="mailto:varmaprudhvi7@gmail.com?subject=Facial Cartoonizer - Issues">Prudhvi varma</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h2 class="text-center mt-5" style="color:#080808"> Facial Cartoonizer </h2>
+      <form method="post" enctype="multipart/form-data">
+        <h3 class="text-center mt-5" style="color:#131212;">Convert your pictures to cartoons!</h3>
+        <h5 class="text-center mt-5" style="color:#100f0f;">Ensure your Images are of <i>.png/.jpg</i> format only.</h5>
+        <div class="p-5 bg-transparent rounded-lg mt-5">
+          <img src="{{ url_for('static', filename='upload_logo.png') }}" alt="" width="200" class="d-block mx-auto mb-4 ">
+          <hr>
+          <center>
+            <input type="file" name="file" class="form-control mb-4" required>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </center>
+          <hr>
+        </div>
+      </form>
+      
+      <!-- Displaying the result (cartoonized image) -->
+      {% if filename %}
+        <h3 class="text-center mt-5" style="color:#FFEDBC;">Here is your cartoonized image!</h3>
+        <div class="text-center">
+          <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Cartoonized Image" class="img-fluid">
+          <br>
+          <a href="{{ url_for('uploaded_file', filename=filename) }}" class="btn btn-success mt-3" download>Download Cartoonized Image</a>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
